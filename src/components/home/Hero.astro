@@ -1,23 +1,31 @@
 ---
-import {Image} from 'astro:assets';
+import { Image } from "astro:assets";
+import { cn } from "@utils/styling";
 ---
 
 <section id="hero" class="relative h-screen w-full">
-    <div id="hero_image" class="absolute size-full"></div>
-    <div id="hero_text" class="relative size-full flex flex-col items-center justify-center text-[var(--primary)] z-10 text-2xl md:text-3xl">
-        <p>Hey, I'm Ray</p>
-    </div>
+  <div id="hero_image" class="absolute size-full"></div>
+  <div
+    id="hero_text"
+    class={cn(
+      "relative size-full flex flex-col items-center justify-center",
+      "text-[var(--primary)] text-2xl md:text-3xl",
+      "z-10",
+    )}
+  >
+    <p>Hey, I'm Ray</p>
+  </div>
 </section>
 
 <style>
-    #hero_image {
-        background-image: url('beach.webp');
-        background-size: cover;
-        background-position: 30% 50%;
-        /* opacity: 0; */
-    }
+  #hero_image {
+    background-image: url("beach.webp");
+    background-size: cover;
+    background-position: 30% 50%;
+    opacity: 0;
+  }
 
-    #hero_text {
-        background: rgba(0, 0, 0, 0.5);
-    }
+  #hero_text {
+    background: rgba(0, 0, 0, 0.5);
+  }
 </style>
