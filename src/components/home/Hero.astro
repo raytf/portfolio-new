@@ -26,7 +26,10 @@ import { cn } from "@utils/styling";
       "flex flex-col justify-center items-center",
     )}
   >
-    <p id="hero_text--greeting" class="text-xl md:text-2xl text-[var(--muted)]">
+    <p
+      id="hero_text--greeting"
+      class="text-2xl md:text-3xl text-[var(--muted)]"
+    >
       Hey, I'm Ray
     </p>
     <h1 id="hero_text--title" class="text-3xl md:text-4xl p-4 opacity-0">
@@ -99,8 +102,9 @@ import { cn } from "@utils/styling";
 
   #hero_image {
     background-image: url("beach.webp");
-    background-size: cover;
-    background-position: 30% 50%;
+    background-size: auto 111%;
+    background-repeat: no-repeat;
+    background-position: 35% 0%;
     opacity: 0.8;
 
     clip-path: var(--initial-clip-path);
@@ -148,14 +152,37 @@ import { cn } from "@utils/styling";
     }
   }
 
+  /* Default animation for mobile screens */
   @keyframes revealBackground {
     0% {
       clip-path: var(--initial-clip-path);
       opacity: 0;
+      background-size: auto 180%;
     }
     100% {
       clip-path: var(--final-clip-path);
-      opacity: 0.5;
+      opacity: 0.25;
+      background-size: auto 170%;
+    }
+  }
+
+  /* Media query for large/wide screens */
+  @media (min-width: 1024px) {
+    #hero_image {
+      background-position: 44% 44%;
+    }
+
+    @keyframes revealBackground {
+      0% {
+        clip-path: var(--initial-clip-path);
+        opacity: 0;
+        background-size: 166%;
+      }
+      100% {
+        clip-path: var(--final-clip-path);
+        opacity: 0.25;
+        background-size: 155%;
+      }
     }
   }
 </style>
