@@ -26,7 +26,9 @@ import { cn } from "@utils/styling";
       "flex flex-col justify-center items-center",
     )}
   >
-    <p id="hero_text--greeting" class="text-xl md:text-2xl">Hey, I'm Ray</p>
+    <p id="hero_text--greeting" class="text-xl md:text-2xl text-[var(--muted)]">
+      Hey, I'm Ray
+    </p>
     <h1 id="hero_text--title" class="text-3xl md:text-4xl p-4 opacity-0">
       A web developer based in QLD
     </h1>
@@ -36,7 +38,7 @@ import { cn } from "@utils/styling";
         target="_blank"
         href="https://github.com/raytf"
         aria-label="GitHub"
-        class="opacity-0 text-[var(--primary)] hover:text-white transition duration-300 ease-in-out border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+        class="opacity-0 text-[var(--muted)] hover:text-white transition duration-300 ease-in-out border-1 border-[var(--muted)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +56,7 @@ import { cn } from "@utils/styling";
         target="_blank"
         href="https://www.linkedin.com/in/yr-feng/"
         aria-label="LinkedIn"
-        class="opacity-0 text-[var(--primary)] hover:text-white transition duration-300 ease-in-out border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+        class="opacity-0 text-[var(--muted)] hover:text-white transition duration-300 ease-in-out border-1 border-[var(--muted)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +74,7 @@ import { cn } from "@utils/styling";
         target="_blank"
         href="https://mail.google.com/mail/?view=cm&fs=1&to=ray@dotdothorse.com&su=Hey%20Ray!"
         aria-label="Email"
-        class="opacity-0 text-[var(--primary)] hover:text-white transition duration-300 ease-in-out border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+        class="opacity-0 text-[var(--muted)] hover:text-white transition duration-300 ease-in-out border-1 border-[var(--muted)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -99,6 +101,7 @@ import { cn } from "@utils/styling";
     background-image: url("beach.webp");
     background-size: cover;
     background-position: 30% 50%;
+    opacity: 0.8;
 
     clip-path: var(--initial-clip-path);
     opacity: 0;
@@ -106,12 +109,6 @@ import { cn } from "@utils/styling";
     /* Single animation with different property durations */
     animation: revealBackground 2.5s ease-in-out forwards;
     animation-delay: 1s;
-  }
-  #hero_image::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
   }
 
   #hero_text--greeting {
@@ -156,12 +153,9 @@ import { cn } from "@utils/styling";
       clip-path: var(--initial-clip-path);
       opacity: 0;
     }
-    50% {
-      opacity: 0.5;
-    }
     100% {
       clip-path: var(--final-clip-path);
-      opacity: 1;
+      opacity: 0.5;
     }
   }
 </style>

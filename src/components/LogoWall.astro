@@ -1,17 +1,18 @@
 ---
 const technologies = [
-  "astro",
-  "vue",
-  "react",
-  "typeScript",
-  "tailwindcss",
-  "next",
-  "nodejs",
   "HTML5",
   "CSS3",
   "javaScript",
+  "typeScript",
+  "tailwindcss",
+  "nodejs",
+  "react",
+  "next",
+  "svelte",
+  "astro",
+  // "vue",
   "git",
-  "supabase",
+  // "supabase",
   "mysql",
   "bash",
 ];
@@ -29,7 +30,7 @@ const technologies = [
 
   <div class="flex animate-scroll hover:animate-paused gap-12 md:gap-20 w-max">
     {
-      [...technologies, ...technologies, ...technologies].map((tech) => (
+      [...technologies].map((tech) => (
         <div class="flex items-center gap-2 group transition-all duration-300">
           <img
             src={`/svg/${tech}.svg`}
@@ -54,16 +55,17 @@ const technologies = [
       transform: translateX(0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translateX(-100%);
     }
   }
   .animate-scroll {
-    animation: scroll 60s linear infinite;
+    /* animation: scroll 60s linear infinite; */
+    animation: scroll 10s linear;
   }
 
   @media (min-width: 768px) {
     .animate-scroll {
-      animation-duration: 50s;
+      animation-duration: 10s;
     }
   }
 </style>
