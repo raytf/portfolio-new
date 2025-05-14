@@ -48,8 +48,8 @@ const projects = [
 ];
 ---
 
-<Layout>
-  <Header />
+<Layout title="Ray Feng - Projects">
+  <Header transition:persist="navbar" />
   <main class="projects-page">
     <div class="container">
       <header class="page-header">
@@ -80,7 +80,6 @@ const projects = [
     color: var(--primary);
     min-height: 100vh; /* Ensure page takes up full viewport height */
     position: relative; /* Establish positioning context */
-    z-index: 1; /* Ensure content is above any background elements */
   }
 
   .container {
@@ -99,15 +98,15 @@ const projects = [
   #page-title {
     font-size: 2.5rem;
     margin-bottom: 16px;
-    opacity: 1; /* Changed from 0 to 1 to ensure visibility */
-    /* animation: fadeIn 1.5s ease forwards; */ /* Commented out animation temporarily */
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
   }
 
   #page-subtitle {
     font-size: 1.25rem;
     color: var(--muted);
-    opacity: 1; /* Changed from 0 to 1 to ensure visibility */
-    /* animation: fadeIn 1.5s ease forwards 0.3s; */ /* Commented out animation temporarily */
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards 0.3s;
   }
 
   .projects-grid {

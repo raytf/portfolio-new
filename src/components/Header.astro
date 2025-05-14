@@ -56,12 +56,15 @@
 </style>
 
 <script>
-  // Add active class to current page link
-  document.addEventListener("DOMContentLoaded", () => {
+  // Function to update active link based on current path
+  function updateActiveLink() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll("#header a");
 
     navLinks.forEach((link) => {
+      // Remove active class from all links first
+      link.classList.remove("active");
+
       const href = link.getAttribute("href") || "";
 
       // Check if the current path matches the link's href
@@ -73,5 +76,11 @@
         link.classList.add("active");
       }
     });
-  });
+  }
+
+  // Update active link on initial page load
+  document.addEventListener("DOMContentLoaded", updateActiveLink);
+
+  // Update active link after each page transition
+  document.addEventListener("astro:page-load", updateActiveLink);
 </script>
