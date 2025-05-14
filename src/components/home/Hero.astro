@@ -13,16 +13,40 @@ import { cn } from "@utils/styling";
   <div
     id="hero_image"
     class={cn(
-      "absolute size-full",
+      "absolute size-full pointer-events-none z-[1]",
       "flex flex-col justify-center items-center",
     )}
   >
+    <!-- Scroll Down Button -->
+    <a
+      href="#services"
+      class={cn(
+        "absolute bottom-8 z-10 pointer-events-auto",
+        "left-1/2 transform -translate-x-1/2",
+        "cursor-pointer animate-bounce",
+      )}
+      aria-label="Scroll down"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="size-8 text-[var(--primary)] hover:text-white transition-colors duration-300"
+      >
+        <path d="M12 5v14"></path>
+        <path d="m19 12-7 7-7-7"></path>
+      </svg>
+    </a>
   </div>
 
   <div
     id="hero_text"
     class={cn(
-      "relative size-full text-center z-10",
+      "relative size-full text-center",
       "flex flex-col justify-center items-center",
     )}
   >
@@ -104,7 +128,7 @@ import { cn } from "@utils/styling";
     background-image: url("beach.webp");
     background-size: auto 111%;
     background-repeat: no-repeat;
-    background-position: 35% 0%;
+    background-position: 27% 0%;
     opacity: 0.8;
 
     clip-path: var(--initial-clip-path);
@@ -186,3 +210,22 @@ import { cn } from "@utils/styling";
     }
   }
 </style>
+
+<script>
+  // Add scroll functionality to the scroll down button
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollButton = document.getElementById("scroll-down-button");
+
+    if (scrollButton) {
+      scrollButton.addEventListener("click", () => {
+        // Get the next section after the hero section
+        const heroSection = document.getElementById("hero");
+
+        if (heroSection && heroSection.nextElementSibling) {
+          // Smooth scroll to the next section
+          heroSection.nextElementSibling.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+  });
+</script>
