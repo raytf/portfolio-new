@@ -1,0 +1,155 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import ProjectCard from "@components/projects/ProjectCard.astro";
+
+// Sample project data
+const projects = [
+  {
+    title: "E-Commerce Platform",
+    image:
+      "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1064&auto=format&fit=crop",
+  },
+  {
+    title: "Portfolio Website",
+    image:
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1055&auto=format&fit=crop",
+  },
+  {
+    title: "Task Management App",
+    image:
+      "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1172&auto=format&fit=crop",
+  },
+  {
+    title: "Weather Dashboard",
+    image:
+      "https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=1170&auto=format&fit=crop",
+  },
+  {
+    title: "Social Media Platform",
+    image:
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1074&auto=format&fit=crop",
+  },
+  {
+    title: "Fitness Tracker",
+    image:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1170&auto=format&fit=crop",
+  },
+  {
+    title: "Recipe App",
+    image:
+      "https://images.unsplash.com/photo-1505935428862-770b6f24f629?q=80&w=1167&auto=format&fit=crop",
+  },
+  {
+    title: "Travel Planner",
+    image:
+      "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1121&auto=format&fit=crop",
+  },
+];
+---
+
+<Layout>
+  <Header />
+  <main class="projects-page">
+    <div class="container">
+      <header class="page-header">
+        <h1 id="page-title">My Projects</h1>
+        <p id="page-subtitle">A collection of my recent work</p>
+      </header>
+
+      <section class="projects-grid">
+        {
+          projects.map((project, index) => (
+            <div class="card-wrapper">
+              <ProjectCard
+                title={project.title}
+                image={project.image}
+                index={index}
+              />
+            </div>
+          ))
+        }
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .projects-page {
+    padding-top: 100px; /* Increased to ensure content is below fixed header */
+    color: var(--primary);
+    min-height: 100vh; /* Ensure page takes up full viewport height */
+    position: relative; /* Establish positioning context */
+    z-index: 1; /* Ensure content is above any background elements */
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-top: 40px;
+  }
+
+  #page-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    opacity: 1; /* Changed from 0 to 1 to ensure visibility */
+    /* animation: fadeIn 1.5s ease forwards; */ /* Commented out animation temporarily */
+  }
+
+  #page-subtitle {
+    font-size: 1.25rem;
+    color: var(--muted);
+    opacity: 1; /* Changed from 0 to 1 to ensure visibility */
+    /* animation: fadeIn 1.5s ease forwards 0.3s; */ /* Commented out animation temporarily */
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+    padding-bottom: 80px;
+  }
+
+  .card-wrapper {
+    padding: 15px;
+    width: 100%;
+    transition: width 0.3s ease;
+  }
+
+  /* Responsive breakpoints for different column counts */
+  @media (min-width: 600px) {
+    .card-wrapper {
+      width: 50%; /* 2 columns */
+    }
+  }
+
+  @media (min-width: 900px) {
+    .card-wrapper {
+      width: 33.333%; /* 3 columns */
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .card-wrapper {
+      width: 25%; /* 4 columns */
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
