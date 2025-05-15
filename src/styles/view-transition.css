@@ -1,0 +1,13 @@
+@view-transition {
+    navigation: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*) {
+        animation-name: none;
+    }
+}
+
+::view-transition-group(root) {
+    animation-duration: 1s;
+}
