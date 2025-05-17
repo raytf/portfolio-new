@@ -1,11 +1,225 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "@components/home/Hero.astro";
 ---
 
-<Layout title="Ray Feng - Home">
-    <div class="text-white z-10">
-        <h1>CONTAT</h1>
-        <p>yoyoyoyo</p>
+<Layout title="Ray Feng - Contact">
+  <main class="contact-page" transition:animate="fade">
+    <div class="container">
+      <header class="page-header">
+        <h1 id="page-title" transition:animate="fade">Contact Me</h1>
+        <p id="page-subtitle" transition:animate="fade">
+          Have a question or want to work together? Send me a message!
+        </p>
+      </header>
+
+      <div class="form-container">
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your email address"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Your phone number (optional)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Your message"
+              required></textarea>
+          </div>
+
+          <button type="submit" class="submit-button"> Send Message </button>
+        </form>
+      </div>
     </div>
+  </main>
 </Layout>
+
+<style>
+  .contact-page {
+    padding-top: 80px; /* Ensure content is below fixed header */
+    color: var(--primary);
+    position: relative;
+    z-index: 1;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 40px;
+  }
+
+  #page-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+  }
+
+  #page-subtitle {
+    font-size: 1.25rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-container {
+    background-color: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--muted);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 60px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  label {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    padding: 12px 16px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(204, 197, 185, 0.3);
+    border-radius: 6px;
+    color: var(--primary);
+    font-size: 1rem;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(255, 252, 242, 0.2);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(204, 197, 185, 0.6);
+  }
+
+  .submit-button {
+    margin-top: 10px;
+    padding: 14px 24px;
+    background-color: rgba(255, 252, 242, 0.1);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .submit-button:hover {
+    background-color: var(--primary);
+    color: var(--background);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .form-container {
+      padding: 20px;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Simple form handling
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contact-form");
+
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(e.target as HTMLFormElement);
+      const formValues = Object.fromEntries(formData.entries());
+
+      // Here you would typically send the data to a server
+      console.log("Form submitted with values:", formValues);
+
+      // Show success message (in a real app, do this after successful submission)
+      alert("Thanks for your message! I'll get back to you soon.");
+
+      // Reset the form
+      (e.target as HTMLFormElement).reset();
+    });
+  });
+
+  // Also handle the form after page transitions
+  document.addEventListener("astro:page-load", () => {
+    const form = document.getElementById("contact-form");
+
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(e.target as HTMLFormElement);
+      const formValues = Object.fromEntries(formData.entries());
+
+      // Here you would typically send the data to a server
+      console.log("Form submitted with values:", formValues);
+
+      // Show success message (in a real app, do this after successful submission)
+      alert("Thanks for your message! I'll get back to you soon.");
+
+      // Reset the form
+      (e.target as HTMLFormElement).reset();
+    });
+  });
+</script>
